@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -15,9 +16,10 @@ public class PrincipalFrame extends JFrame {
 	private JTree jTree;
 	private DefaultMutableTreeNode model;
 	
-	public PrincipalFrame() {
+	public PrincipalFrame(ActionListener listener) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
+		setJMenuBar(new MenuBar(listener));
 		model = new DefaultMutableTreeNode();
 		jTree = new JTree(model);
 		add(new JScrollPane(jTree), BorderLayout.CENTER);

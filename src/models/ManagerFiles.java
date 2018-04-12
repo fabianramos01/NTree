@@ -15,8 +15,6 @@ public class ManagerFiles {
 	public void loadTree(File file, int num) {
 		nTree.addNode(null, new NodeFather(file.getName()));
 		loadFiles(file, num);
-		System.out.println("---");
-		nTree.print();
 	}
 
 	private void loadFiles(File actual, int num) {
@@ -43,11 +41,14 @@ public class ManagerFiles {
 			createDirectory(name.substring(i + 1), num);
 			node = nTree.search(name.substring(i+1));
 		}
-		if (file.length() < num) {
-			nTree.addNode(node.getChilds().get(0), new NodeFather(name.substring(0, i)));
-		} else {
-			nTree.addNode(node.getChilds().get(1), new NodeFather(name.substring(0, i)));
+		if (0 < i) {
+			if (file.length() < num) {
+				nTree.addNode(node.getChilds().get(0), new NodeFather(name.substring(0, i)));
+			} else {
+				nTree.addNode(node.getChilds().get(1), new NodeFather(name.substring(0, i)));
+			}
 		}
+		
 	}
 
 	private void createDirectory(String folderName, int num) {
