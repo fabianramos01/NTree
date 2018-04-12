@@ -24,7 +24,12 @@ public class Node {
 		return childs;
 	}
 	
-	protected void addChild(Node nodeNTree) {
-		childs.add(nodeNTree);
+	protected void addChild(Node node) {
+		childs.add(node);
+	}
+	
+	@Override
+	public String toString() {
+		return info;
 	}
 }

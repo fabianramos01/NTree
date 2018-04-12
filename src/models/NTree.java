@@ -3,10 +3,10 @@ package models;
 public class NTree {
 
 	private Node root;
-	
+
 	public NTree() {
 	}
-	
+
 	public void addNode(Node father, Node node) {
 		if (father != null) {
 			father.addChild(node);
@@ -14,47 +14,43 @@ public class NTree {
 			root = node;
 		}
 	}
-	
+
 	public Node search(String info) {
 		if (info != null) {
 			return search(root, info);
-		} else {
-			return null;
 		}
+		return null;
 	}
-	
+
 	private Node search(Node actual, String info) {
-		if (actual != null) {
-			if (actual.getInfo().equalsIgnoreCase(info)) {
-				return actual;
-			} else {
-				for (int i = 0; i < actual.getChilds().size(); i++) {
-					Node node = search(actual.getChilds().get(i), info);
-					if (node != null) {
-						return node;
-					}
+		if (actual.getInfo().equalsIgnoreCase(info)) {
+			return actual;
+		} else if (!actual.getChilds().isEmpty()) {
+			for (Node node : actual.getChilds()) {
+				Node seacrh = search(node, info);
+				if (seacrh != null) {
+					return seacrh;
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	public void print() {
 		if (root != null) {
 			print(root, "");
 		}
 	}
-	
+
 	private void print(Node actual, String line) {
-		if (actual.getChilds() != null) {
-			System.out.println();
-		} else {
+		System.out.println(line + actual.toString());
+		if (!actual.getChilds().isEmpty()) {
 			for (Node node : actual.getChilds()) {
 				print(node, line + "-");
 			}
 		}
 	}
-	
+
 	public Node getRoot() {
 		return root;
 	}
