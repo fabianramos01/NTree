@@ -26,6 +26,7 @@ public class Controller {
 			num *= 1000000;
 			managerFiles.loadTree(fileChooser.getSelectedFile(), num);
 		}
+		pFrame.paintTree(managerFiles.getRoot());
 	}
 	
 	

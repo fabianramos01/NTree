@@ -20,7 +20,7 @@ public class Node {
 		this.info = info;
 	}
 
-	protected ArrayList<Node> getChilds() {
+	public ArrayList<Node> getChilds() {
 		return childs;
 	}
 	

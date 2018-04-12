@@ -56,4 +56,8 @@ public class ManagerFiles {
 		nTree.addNode(extension, new NodeFather(ConstantList.FOLDER_HIGH + num));
 		nTree.addNode(nTree.getRoot(), extension);
 	}
+
+	public Node getRoot() {
+		return nTree.getRoot();
+	}
 }
