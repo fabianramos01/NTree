@@ -41,7 +41,7 @@ public class ManagerFiles {
 			createDirectory(name.substring(i + 1), num);
 			node = nTree.search(name.substring(i+1));
 		}
-		if (0 < i) {
+		if (!node.getChilds().isEmpty()) {
 			if (file.length() < num) {
 				nTree.addNode(node.getChilds().get(0), new NodeFather(name.substring(0, i)));
 			} else {
