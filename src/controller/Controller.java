@@ -26,7 +26,7 @@ public class Controller implements ActionListener {
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int selected = fileChooser.showOpenDialog(pFrame);
 		if (selected == JFileChooser.APPROVE_OPTION) {
-			int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de referencia"));
+			int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de referencia (MB)"));
 			num *= 1000000;
 			managerFiles.loadTree(fileChooser.getSelectedFile(), num);
 		}
