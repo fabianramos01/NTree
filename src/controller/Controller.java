@@ -17,11 +17,9 @@ public class Controller implements ActionListener {
 	public Controller() {
 		managerFiles = new ManagerFiles();
 		pFrame = new PrincipalFrame(this);
-		loadRoot();
 	}
 
 	public void loadRoot() {
-		pFrame.setVisible(false);
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int selected = fileChooser.showOpenDialog(pFrame);
@@ -31,7 +29,6 @@ public class Controller implements ActionListener {
 			managerFiles.loadTree(fileChooser.getSelectedFile(), num);
 		}
 		pFrame.paintTree(managerFiles.getRoot());
-		pFrame.setVisible(true);
 	}
 
 	@Override
