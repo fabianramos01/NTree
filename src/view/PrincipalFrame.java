@@ -3,11 +3,13 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import controller.ConstantList;
 import models.Node;
 
 public class PrincipalFrame extends JFrame {
@@ -17,6 +19,7 @@ public class PrincipalFrame extends JFrame {
 	private DefaultMutableTreeNode model;
 	
 	public PrincipalFrame(ActionListener listener) {
+		setIconImage(new ImageIcon(getClass().getResource(ConstantList.ICON_APP)).getImage());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		setJMenuBar(new MenuBar(listener));
