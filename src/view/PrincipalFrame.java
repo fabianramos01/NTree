@@ -32,19 +32,19 @@ public class PrincipalFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	public void paintTree(Node rootNode) {
+	public void paintTree(Node<String> rootNode) {
 		root = new DefaultMutableTreeNode(rootNode);
 		model.setRoot(root);
-		for (Node node : rootNode.getChilds()) {
+		for (Node<String> node : rootNode.getChilds()) {
 			createNode(root, node);
 		}
 	}
 	
-	private void createNode(DefaultMutableTreeNode actual, Node node) {
+	private void createNode(DefaultMutableTreeNode actual, Node<String> node) {
 		if (node != null) {
 			DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(node);
 			actual.add(newNode);
-			for (Node child : node.getChilds()) {
+			for (Node<String> child : node.getChilds()) {
 				createNode(newNode, child);
 			}
 		}

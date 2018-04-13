@@ -1,13 +1,13 @@
 package models;
 
-public class NTree {
+public class NTree<T> {
 
-	private Node root;
+	private Node<T> root;
 
 	public NTree() {
 	}
 
-	public void addNode(Node father, Node node) {
+	public void addNode(Node<T> father, Node<T> node) {
 		if (father != null) {
 			father.addChild(node);
 		} else {
@@ -15,19 +15,19 @@ public class NTree {
 		}
 	}
 
-	public Node search(String info) {
+	public Node<T> search(String info) {
 		if (info != null) {
 			return search(root, info);
 		}
 		return null;
 	}
 
-	private Node search(Node actual, String info) {
-		if (actual.getInfo().equalsIgnoreCase(info)) {
+	private Node<T> search(Node<T> actual, String info) {
+		if (actual.toString().equalsIgnoreCase(info)) {
 			return actual;
 		} else if (!actual.getChilds().isEmpty()) {
-			for (Node node : actual.getChilds()) {
-				Node seacrh = search(node, info);
+			for (Node<T> node : actual.getChilds()) {
+				Node<T> seacrh = search(node, info);
 				if (seacrh != null) {
 					return seacrh;
 				}
@@ -42,16 +42,16 @@ public class NTree {
 		}
 	}
 
-	private void print(Node actual, String line) {
+	private void print(Node<T> actual, String line) {
 		System.out.println(line + actual.toString());
 		if (!actual.getChilds().isEmpty()) {
-			for (Node node : actual.getChilds()) {
+			for (Node<T> node : actual.getChilds()) {
 				print(node, line + "-");
 			}
 		}
 	}
 
-	public Node getRoot() {
+	public Node<T> getRoot() {
 		return root;
 	}
 }

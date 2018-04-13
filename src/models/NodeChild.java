@@ -1,12 +1,17 @@
 package models;
 
-public class NodeChild extends Node {
+public class NodeChild<T> extends Node<T> {
 	
-	public NodeChild(String info) {
+	public NodeChild(T info) {
 		super(info);
 	}
 
-	public String getInfo() {
+	public T getInfo() {
 		return getInfo();
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 }

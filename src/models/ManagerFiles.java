@@ -6,14 +6,14 @@ import controller.ConstantList;
 
 public class ManagerFiles {
 
-	private NTree nTree;
+	private NTree<String> nTree;
 
 	public ManagerFiles() {
-		nTree = new NTree();
+		nTree = new NTree<String>();
 	}
 
 	public void loadTree(File file, int num) {
-		nTree.addNode(null, new NodeFather(file.getName()));
+		nTree.addNode(null, new NodeFather<String>(file.getName()));
 		loadFiles(file, num);
 	}
 
@@ -36,29 +36,29 @@ public class ManagerFiles {
 			name += ConstantList.OTHER;
 		}
 		int i = name.lastIndexOf(".");
-		Node node = nTree.search(name.substring(i+1));
+		Node<String> node = nTree.search(name.substring(i+1));
 		while (node == null) {
 			createDirectory(name.substring(i + 1), num);
 			node = nTree.search(name.substring(i+1));
 		}
 		if (!node.getChilds().isEmpty()) {
 			if (file.length() < num) {
-				nTree.addNode(node.getChilds().get(0), new NodeFather(name.substring(0, i)));
+				nTree.addNode(node.getChilds().get(0), new NodeFather<String>(name.substring(0, i)));
 			} else {
-				nTree.addNode(node.getChilds().get(1), new NodeFather(name.substring(0, i)));
+				nTree.addNode(node.getChilds().get(1), new NodeFather<String>(name.substring(0, i)));
 			}
 		}
 		
 	}
 
 	private void createDirectory(String folderName, int num) {
-		Node extension = new NodeFather(folderName);
-		nTree.addNode(extension, new NodeFather(ConstantList.FOLDER_SMALL + num));
-		nTree.addNode(extension, new NodeFather(ConstantList.FOLDER_HIGH + num));
+		Node<String> extension = new NodeFather<String>(folderName);
+		nTree.addNode(extension, new NodeFather<String>(ConstantList.FOLDER_SMALL + num));
+		nTree.addNode(extension, new NodeFather<String>(ConstantList.FOLDER_HIGH + num));
 		nTree.addNode(nTree.getRoot(), extension);
 	}
 
-	public Node getRoot() {
+	public Node<String> getRoot() {
 		return nTree.getRoot();
 	}
 }

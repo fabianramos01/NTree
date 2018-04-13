@@ -2,34 +2,34 @@ package models;
 
 import java.util.ArrayList;
 
-public class Node {
+public class Node<T> {
 
-	private String info;
-	private ArrayList<Node> childs;
+	private T info;
+	private ArrayList<Node<T>> childs;
 	
-	public Node(String info) {
+	public Node(T info) {
 		this.info = info;
 		childs = new ArrayList<>();
 	}
 
-	public String getInfo() {
+	public T getInfo() {
 		return info;
 	}
 
-	public void setInfo(String info) {
+	public void setInfo(T info) {
 		this.info = info;
 	}
 
-	public ArrayList<Node> getChilds() {
+	public ArrayList<Node<T>> getChilds() {
 		return childs;
 	}
 	
-	protected void addChild(Node node) {
+	protected void addChild(Node<T> node) {
 		childs.add(node);
 	}
 	
 	@Override
 	public String toString() {
-		return info;
+		return info.toString();
 	}
 }
